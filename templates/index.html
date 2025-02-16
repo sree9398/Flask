@@ -19,11 +19,16 @@
         }
     </style>
 </head>
-<body class="bg-gradient-to-r from-green-400 to-blue-500 h-screen flex flex-col">
+<body class="bg-gradient-to-r from-green-400 to-blue-500 min-h-screen flex flex-col">
     <!-- Navbar -->
     <nav class="bg-white shadow-md p-4 flex justify-between items-center rounded-full mx-4 mt-4">
-        <div class="text-xl font-bold text-green-600 mx-6"><a href="{{ url_for('index') }}">Smart Agriculture</a></div>
-        <ul class="flex space-x-4">
+        <div class="text-lg sm:text-xl font-bold text-green-600 mx-4">
+            <a href="{{ url_for('index') }}">Smart Agriculture</a>
+        </div>
+        <button id="menu-toggle" class="sm:hidden text-gray-700 focus:outline-none">
+            ☰
+        </button>
+        <ul id="menu" class="hidden sm:flex space-x-4">
             <li><a href="{{ url_for('index') }}" class="text-gray-700 font-bold hover:text-green-600 px-3 py-2 rounded-md hover:bg-gray-100">Home</a></li>
             <li><a href="{{ url_for('crop_yield') }}" class="text-gray-700 font-bold hover:text-green-600 px-3 py-2 rounded-md hover:bg-gray-100">Crop Yield</a></li>
             <li><a href="{{ url_for('crop_recc') }}" class="text-gray-700 font-bold hover:text-green-600 px-3 py-2 rounded-md hover:bg-gray-100">Crop Recommendation</a></li>
@@ -31,21 +36,31 @@
     </nav>
 
     <!-- Main Content -->
-    <div class="flex-grow flex flex-col items-center justify-center">
-        <h1 class="text-4xl font-bold text-gray-800 mb-10">Smart Agriculture: Crop Recommendation and Yield Prediction</h1>
-        <p class="text-lg text-gray-700 text-center max-w-2xl mb-10">"Empowering farmers with data-driven insights for better crop selection and yield optimization. Harvest smarter, not harder."</p>
-        <div class="flex space-x-8">
+    <div class="flex-grow flex flex-col items-center justify-center px-4 text-center">
+        <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+            Smart Agriculture: Crop Recommendation and Yield Prediction
+        </h1>
+        <p class="text-md sm:text-lg text-gray-700 max-w-2xl mb-6">
+            "Empowering farmers with data-driven insights for better crop selection and yield optimization. Harvest smarter, not harder."
+        </p>
+        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
             <!-- Button 1 -->
             <a href="{{ url_for('crop_recc') }}" 
-               class="animated-bounce bg-white text-green-600 px-6 py-3 rounded-lg shadow-lg text-xl font-semibold hover:bg-green-600 hover:text-white transform transition duration-300 hover:scale-105">
+               class="animated-bounce bg-white text-green-600 px-6 py-3 rounded-lg shadow-lg text-lg sm:text-xl font-semibold hover:bg-green-600 hover:text-white transform transition duration-300 hover:scale-105 w-full sm:w-auto">
                 Crop Recommendation
             </a>
             <!-- Button 2 -->
             <a href="{{ url_for('crop_yield') }}" 
-               class="animated-bounce bg-white text-blue-600 px-6 py-3 rounded-lg shadow-lg text-xl font-semibold hover:bg-blue-600 hover:text-white transform transition duration-300 hover:scale-105">
+               class="animated-bounce bg-white text-blue-600 px-6 py-3 rounded-lg shadow-lg text-lg sm:text-xl font-semibold hover:bg-blue-600 hover:text-white transform transition duration-300 hover:scale-105 w-full sm:w-auto">
                 Crop Yield Prediction
             </a>
         </div>
     </div>
+
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function () {
+            document.getElementById('menu').classList.toggle('hidden');
+        });
+    </script>
 </body>
 </html>

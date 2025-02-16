@@ -34,7 +34,7 @@
 
             try {
                 // Call the backend API
-                const response = await fetch('http://127.0.0.1:5000/predict_yield', {
+                const response = await fetch("{{ url_for('predict_yield') }}", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
